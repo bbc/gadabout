@@ -4,10 +4,10 @@ $:.unshift File.expand_path('../lib', __FILE__)
 require 'gadabout/version'
 
 Gem::Specification.new do |s|
-  s.name          = "gadabout"
+  s.name          = "bbc-gadabout"
   s.version       = Gadabout::VERSION
-  s.authors       = ["Josh McGhee"]
-  s.email         = ["joshpmcghee@gmail.com"]
+  s.authors       = ["Josh McGhee", "Ben Clark"]
+  s.email         = ["joshpmcghee@gmail.com","ben.clark02@bbc.co.uk"]
   s.homepage      = "https://github.com/joshpmcghee/gadabout"
   s.summary       = "A swiss army knife gem for the Hashicorp Nomad job scheduler"
   s.description   = "A swiss army knife gem for the Hashicorp Nomad job scheduler"
