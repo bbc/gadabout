@@ -188,6 +188,12 @@ module Gadabout
     def get(path, params = {})
       begin
         resp = @rest[path].get(:params => params)
+      rescue RestClient::Exception => e
+	if e.http_code == 404
+	  raise ResourceNotFoundError.new
+        else
+          raise "Error whilst making HTTP GET request to the Nomad Agent at #{path}: #{e} #{e.response}"
+	end
       rescue StandardError => e
         raise "Error whilst making HTTP GET request to the Nomad Agent at #{path}: #{e} #{e.response}"
       end
