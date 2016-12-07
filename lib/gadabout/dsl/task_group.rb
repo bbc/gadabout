@@ -24,7 +24,7 @@ module Gadabout
 
         t.instance_eval &block
 
-        @tasks << t
+        @tasks = t
       end
 
       def constraint(&block)
