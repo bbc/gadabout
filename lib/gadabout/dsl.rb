@@ -9,6 +9,7 @@ require 'gadabout/dsl/resources'
 require 'gadabout/dsl/artifact'
 require 'gadabout/dsl/network'
 require 'gadabout/dsl/periodic'
+require 'gadabout/dsl/ephemeral_disk'
 
 module Gadabout
   module DSL
