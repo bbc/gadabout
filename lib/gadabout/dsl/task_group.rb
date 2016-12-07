@@ -4,6 +4,7 @@ module Gadabout
       def initialize
         @constraints = []
         @count = 0
+        @ephemeral_disk = nil
         @meta = {}
         @name = nil
         @restart_policy = nil
@@ -45,6 +46,11 @@ module Gadabout
       def count(count)
         @count = count
       end
+
+      def ephemeral_disk(ephemeral_disk)
+        @ephemeral_disk = ephemeral_disk
+      end
+
     end
   end
 end

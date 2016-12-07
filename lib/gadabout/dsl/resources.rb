@@ -3,7 +3,6 @@ module Gadabout
     class Resources < Base
       def initialize
         @cpu = nil
-        @disk_m_b = nil
         @iops = nil
         @memory_m_b = nil
         @networks = []
@@ -27,10 +26,6 @@ module Gadabout
 
       def iops(iops)
         @iops = iops
-      end
-
-      def disk(disk)
-        @disk_m_b = disk
       end
     end
   end
