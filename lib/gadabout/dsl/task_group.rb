@@ -11,6 +11,14 @@ module Gadabout
         @tasks = []
       end
 
+      def ephemeral_disk(&block)
+        e = EphemeralDisk.new
+
+        e.instance_eval &block
+
+        @ephemeral_disk << e
+      end
+
       def task(&block)
         t = Task.new
 
@@ -45,10 +53,6 @@ module Gadabout
 
       def count(count)
         @count = count
-      end
-
-      def ephemeral_disk(ephemeral_disk)
-        @ephemeral_disk = ephemeral_disk
       end
 
     end
