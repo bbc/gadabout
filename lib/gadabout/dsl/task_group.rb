@@ -16,7 +16,7 @@ module Gadabout
 
         e.instance_eval &block
 
-        @ephemeral_disk << e
+        @ephemeral_disk = e
       end
 
       def task(&block)
@@ -24,7 +24,7 @@ module Gadabout
 
         t.instance_eval &block
 
-        @tasks = t
+        @tasks << t
       end
 
       def constraint(&block)
