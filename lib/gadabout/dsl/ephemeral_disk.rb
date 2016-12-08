@@ -2,13 +2,13 @@ module Gadabout
   module DSL
     class EphemeralDisk < Base
       def initialize
-        @size = nil
+        @size_m_b = nil
         @migrate = false
         @sticky = false
       end
 
       def size(size)
-        @size = size
+        @size_m_b = size
       end
 
       def migrate(migrate)
