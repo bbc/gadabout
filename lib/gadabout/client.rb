@@ -189,13 +189,15 @@ module Gadabout
       begin
         resp = @rest[path].get(:params => params)
       rescue RestClient::Exception => e
-	if e.http_code == 404
-	  raise ResourceNotFoundError.new
+	      if e.http_code == 404
+	        raise ResourceNotFoundError.new
         else
-          raise "Error whilst making HTTP GET request to the Nomad Agent at #{path}: #{e} #{e.response}"
-	end
+          raise "Error whilst making HTTP GET request to the Nomad Agent"\
+                " at #{path}: #{e} #{e.response}"
+	      end
       rescue StandardError => e
-        raise "Error whilst making HTTP GET request to the Nomad Agent at #{path}: #{e} #{e.response}"
+        raise "Error whilst making HTTP GET request to the Nomad Agent"\
+              " at #{path}: #{e} #{e.response}"
       end
 
       return JSON.parse(resp)
@@ -207,8 +209,16 @@ module Gadabout
 
       begin
         resp = @rest[path].post(body, :params => params)
+      rescue RestClient::Exception => e
+	      if e.http_code == 404
+	        raise ResourceNotFoundError.new
+        else
+          raise "Error whilst making HTTP PUT request to the Nomad Agent"\
+                " at #{path}: #{e} #{e.response}"
+	      end
       rescue StandardError => e
-        raise "Error whilst making HTTP PUT request to the Nomad Agent at #{path}: #{e} #{e.response.body}"
+        raise "Error whilst making HTTP PUT request to the Nomad Agent"\
+              " at #{path}: #{e} #{e.response.body}"
       end
 
       return JSON.parse(resp)
@@ -217,8 +227,16 @@ module Gadabout
     def delete(path, params = {})
       begin
         resp = @rest[path].delete(:params => params)
+      rescue RestClient::Exception => e
+	      if e.http_code == 404
+	        raise ResourceNotFoundError.new
+        else
+          raise "Error whilst making HTTP DELETE request to the Nomad Agent"\
+                " at #{path}: #{e} #{e.response}"
+	      end
       rescue StandardError => e
-        raise "Error whilst making HTTP DELETE request to the Nomad Agent at #{path}: #{e} #{e.response}"
+        raise "Error whilst making HTTP DELETE request to the Nomad Agent"\
+              " at #{path}: #{e} #{e.response}"
       end
 
       return JSON.parse(resp)
