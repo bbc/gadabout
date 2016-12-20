@@ -19,6 +19,12 @@ module Gadabout
       return get(path, opts)
     end
 
+    def poll_jobs(opts={})
+      valid_opts?(opts,["prefix","index","wait"])
+      path = "/jobs"
+      return poll(path, opts)
+    end
+
     #GET /v1/job
     def job(id)
       path = File.join("/job", id)
@@ -184,6 +190,24 @@ module Gadabout
     end
 
     private
+
+    def poll(path, params = {})
+      begin
+        resp = @rest[path].get(:params => params)
+      rescue RestClient::Exception => e
+	      if e.http_code == 404
+	        raise ResourceNotFoundError.new
+        else
+          raise "Error whilst making HTTP GET request to the Nomad Agent"\
+                " at #{path}: #{e} #{e.response}"
+	      end
+      rescue StandardError => e
+        raise "Error whilst making HTTP GET request to the Nomad Agent"\
+              " at #{path}: #{e} #{e.response}"
+      end
+
+      return JSON.parse(resp), resp.headers['X-Nomad-Index']
+    end
 
     def get(path, params = {})
       begin
