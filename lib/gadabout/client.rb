@@ -193,7 +193,7 @@ module Gadabout
 
     def poll(path, params = {})
       begin
-        resp = @rest[path].get(:params => params)
+        resp = @rest[path].get(:params => params, :timeout => 60)
       rescue RestClient::Exception => e
 	      if e.http_code == 404
 	        raise ResourceNotFoundError.new
@@ -206,7 +206,7 @@ module Gadabout
               " at #{path}: #{e} #{e.response}"
       end
 
-      return JSON.parse(resp), resp.headers['X-Nomad-Index']
+      return JSON.parse(resp), resp.headers[:x_nomad_index]
     end
 
     def get(path, params = {})
