@@ -13,6 +13,8 @@ module Gadabout
         @kill_timeout = nil
         @log_config = nil
         @user = nil
+        @vault = nil
+        @templates = []
       end
 
       def constraint(&block)
@@ -69,6 +71,22 @@ module Gadabout
 
       def user(user)
         @user = user
+      end
+   
+      def template(&block)
+        t = Template.new
+
+        t.instance_eval &block
+
+        @templates << t
+      end
+
+      def vault(&block)
+        v = Vault.new
+        
+        v.instance_eval &block
+
+        @vault = v
       end
 
       def driver(driver)
