@@ -4,7 +4,7 @@ module Gadabout
       def initialize
         @change_signal = nil
         @change_mode = nil
-        @env = True
+        @env = nil
         @policies = []
       end
 
