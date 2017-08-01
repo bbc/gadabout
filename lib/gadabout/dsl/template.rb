@@ -8,6 +8,9 @@ module Gadabout
         @change_mode = nil
         @change_signal = nil
         @splay = nil
+        @perms = nil
+        @left_delim = nil
+        @right_delim = nil
       end
 
       def source_path(source_path)
@@ -32,6 +35,18 @@ module Gadabout
 
       def splay(splay)
         @splay = splay
+      end
+
+      def perms(perms)
+        @perms = perms
+      end
+ 
+      def left_delim(left_delim)
+        @left_delim = left_delim
+      end
+
+      def right_delim(right_delim)
+        @right_delim = right_delim
       end
     end
   end
