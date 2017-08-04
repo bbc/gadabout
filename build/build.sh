@@ -12,6 +12,6 @@ curl -u${ARTIFACTORY_USERNAME}:${ARTIFACTORY_API_KEY}                           
 chmod 0600 ~/.gem/credentials
 
 /usr/local/bin/gem build ./gadabout.gemspec
-/usr/local/bin/gem push bbc-gadabout-0.5.8.gem \
+/usr/local/bin/gem push bbc-gadabout-0.5.9.gem \
     --key artifactory_api_key \
     --host https://artifactory-noforge.virt.ch.bbc.co.uk/artifactory/api/gems/irfs-rubygems
